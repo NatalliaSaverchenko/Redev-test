@@ -1,25 +1,27 @@
-import logo from './logo.svg';
-import './App.css';
+import {React, useState} from 'react'
+import Propscomponent from './components/Propscomponent'
+import Counter from './components/Counter';
 
 function App() {
+  const user={id:0,name:'Natallia',age:30}
+  const [isCounterShown,setCounterShown]=useState(false)
+
+const handleFunction=()=>{
+setCounterShown(!isCounterShown)
+}
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <h1>Hello, {user.name}</h1>
+      <Propscomponent 
+      mynumber={5}
+      mystring={'Пишу письмо'}
+      myobject={user}/>
+       <h2>Функция в props</h2>
+      <Counter
+      isOpen={isCounterShown}
+      openCounter={handleFunction}/>
     </div>
   );
 }
 
-export default App;
+export default App
